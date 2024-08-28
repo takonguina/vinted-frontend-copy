@@ -12,7 +12,7 @@ const Offer = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.API_URL}/offer/${id}`
+          `${import.meta.env.VITE_API_URL}/offer/${id}`
         );
         setOffer(response.data);
         setIsLoading(false);

@@ -10,8 +10,9 @@ const HomeWrapper = () => {
   useEffect(() => {
     const fetchOffers = async () => {
       try {
-        const response = await axios.get(`${import.meta.env.API_URL}/offer`);
-        console.log(import.meta.env.API_URL);
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}/offer`
+        );
         setOffers(response.data);
         setLoading(false);
       } catch (error) {
