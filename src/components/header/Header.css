@@ -1,0 +1,51 @@
+/* IMG */
+
+header img {
+  width: 75px;
+}
+
+/* CONTAINERS */
+
+header {
+  display: flex;
+  justify-content: center;
+}
+
+.header-content {
+  width: 1280px;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-search {
+  display: flex;
+  gap: 40px;
+}
+
+.header-buttons {
+  display: flex;
+  gap: 40px;
+}
+
+/* HEADER BUTTONS */
+
+.header-button {
+  height: 30px;
+  width: 115px;
+  border: 1px solid #2cb1ba;
+  border-radius: 5px;
+  font-size: 12px;
+  outline: none;
+}
+
+.user-button {
+  background-color: white;
+  color: #2cb1ba;
+}
+
+.sell-button {
+  background-color: #2cb1ba;
+  color: #fff;
+}
