@@ -11,6 +11,7 @@ const HomeWrapper = () => {
     const fetchOffers = async () => {
       try {
         const response = await axios.get(`${import.meta.env.API_URL}/offer`);
+        console.log(import.meta.env.API_URL);
         setOffers(response.data);
         setLoading(false);
       } catch (error) {
