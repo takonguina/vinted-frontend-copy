@@ -1,0 +1,64 @@
+.signup-content {
+  display: flex;
+  width: 275px;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.signup-form input {
+  border: none;
+  border-bottom: 1px solid #fcced3;
+  height: 35px;
+  margin-bottom: 20px;
+  outline: none;
+}
+
+.checkbox-container {
+  margin-top: 20px;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  color: #999;
+}
+
+.checkbox-container input {
+  margin-bottom: 5px;
+}
+/* TEXT  */
+
+.signup-form > p {
+  text-align: left;
+  color: #999;
+  font-size: 12px;
+}
+
+.signup-text {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+}
+
+/* BUTTON  */
+
+.signup-form > button {
+  background-color: #2cb1ba;
+  height: 45px;
+  width: 100%;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  color: #fff;
+  font-size: 16px;
+  margin-top: 20px;
+  outline: none;
+}
+
+.signup-form input[type="checkbox"] {
+  transform: scale(2);
+  margin-right: 20px;
+}

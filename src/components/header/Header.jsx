@@ -1,7 +1,23 @@
+import { useEffect, useState } from "react";
 import "./Header.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Cookies from "js-cookie";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const [isConnected, setIsConnected] = useState(false);
+
+  const handleDisconnect = () => {
+    setIsConnected(false);
+    Cookies.remove("token");
+  };
+
+  useEffect(() => {
+    if (Cookies.get("token")) {
+      setIsConnected(true);
+    }
+  });
+
   return (
     <header>
       <div className="header-content">
@@ -12,8 +28,34 @@ const Header = () => {
           <input type="text" placeholder="Recherche des articles" />
         </div>
         <div className="header-buttons">
-          <button className="header-button user-button">S'inscrire</button>
-          <button className="header-button user-button">Se connecter</button>
+          {!isConnected ? (
+            <div className="disconnected-buttons">
+              <button
+                className="header-button user-button"
+                onClick={() => {
+                  navigate("/signup");
+                }}
+              >
+                S'inscrire
+              </button>
+              <button
+                className="header-button user-button"
+                onClick={() => {
+                  navigate("/login");
+                }}
+              >
+                Se connecter
+              </button>
+            </div>
+          ) : (
+            <button
+              className="header-button connected"
+              onClick={handleDisconnect}
+            >
+              Se déconnecter
+            </button>
+          )}
+
           <button className="header-button sell-button">
             Vends tes articles
           </button>

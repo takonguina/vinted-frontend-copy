@@ -21,12 +21,17 @@ header {
 
 .header-search {
   display: flex;
-  gap: 40px;
+  gap: 60px;
 }
 
 .header-buttons {
   display: flex;
-  gap: 40px;
+  gap: 70px;
+}
+
+.disconnected-buttons {
+  display: flex;
+  gap: 30px;
 }
 
 /* HEADER BUTTONS */
@@ -48,4 +53,11 @@ header {
 .sell-button {
   background-color: #2cb1ba;
   color: #fff;
+}
+
+.connected {
+  background-color: rgb(194, 54, 54);
+  color: white;
+  font-weight: bold;
+  border: none;
 }
