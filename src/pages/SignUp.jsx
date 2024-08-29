@@ -48,7 +48,7 @@ const SignUp = () => {
         navigate("/");
       }
     } catch (error) {
-      console.log(error.response.data);
+      console.log(error.message);
     }
   };
 

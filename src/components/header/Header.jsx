@@ -8,7 +8,6 @@ const Header = () => {
   const [isConnected, setIsConnected] = useState(false);
 
   const handleDisconnect = () => {
-    setIsConnected(false);
     Cookies.remove("token");
   };
 
