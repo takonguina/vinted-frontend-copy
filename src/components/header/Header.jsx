@@ -9,6 +9,7 @@ const Header = () => {
 
   const handleDisconnect = () => {
     Cookies.remove("token");
+    setIsConnected(false);
   };
 
   useEffect(() => {
