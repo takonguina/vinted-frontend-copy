@@ -2,7 +2,7 @@ import { useState } from "react";
 import Cookies from "js-cookie";
 import "./SignUp.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const SignUp = () => {
   const [username, setUsername] = useState("");
@@ -90,6 +90,9 @@ const SignUp = () => {
           </p>
           <button>S'inscrire</button>
         </form>
+        <Link to="/login" className="micro-link">
+          Tu as déjà un compte ? Connecte-toi !
+        </Link>
       </div>
     </div>
   );

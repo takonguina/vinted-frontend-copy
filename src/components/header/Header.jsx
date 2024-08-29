@@ -10,6 +10,15 @@ const Header = () => {
   const handleDisconnect = () => {
     Cookies.remove("token");
     setIsConnected(false);
+    navigate("/");
+  };
+
+  const handleNewOffer = () => {
+    if (isConnected) {
+      navigate("/newOffer");
+    } else {
+      navigate("/login");
+    }
   };
 
   useEffect(() => {
@@ -56,7 +65,10 @@ const Header = () => {
             </button>
           )}
 
-          <button className="header-button sell-button">
+          <button
+            onClick={handleNewOffer}
+            className="header-button sell-button"
+          >
             Vends tes articles
           </button>
         </div>
