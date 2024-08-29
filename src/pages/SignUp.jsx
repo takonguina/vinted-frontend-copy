@@ -55,7 +55,7 @@ const SignUp = () => {
   return (
     <div className="signup-container">
       <div className="signup-content">
-        <p className="signup-text">S'inscrie</p>
+        <p className="signup-text">S'inscrire</p>
         <form onSubmit={handleSignUp} action="" className="signup-form">
           <input
             placeholder="Nom d'utilisateur"
@@ -81,7 +81,7 @@ const SignUp = () => {
               checked={newsletter}
               onChange={handleNewsletterChange}
             />
-            <span>S'inscrire à notte newsletter</span>
+            <span>S'inscrire à notre newsletter</span>
           </div>
           <p className="major">
             En m'inscrivant je confirme avoir lu et accepté les Termes &
