@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import "./HomeWrapper.css";
 
-const HomeWrapper = () => {
+const HomeWrapper = ({ titleSearch, rangeValues, sort }) => {
   const [offers, setOffers] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -11,7 +11,15 @@ const HomeWrapper = () => {
     const fetchOffers = async () => {
       try {
         const response = await axios.get(
-          `${import.meta.env.VITE_API_URL}/offer`
+          `${import.meta.env.VITE_API_URL}/offer`,
+          {
+            params: {
+              title: titleSearch,
+              priceMin: rangeValues[0],
+              priceMax: rangeValues[1],
+              sort: sort ? "price-asc" : "price-desc",
+            },
+          }
         );
         setOffers(response.data);
         setLoading(false);
@@ -19,9 +27,9 @@ const HomeWrapper = () => {
         console.log(error.message);
       }
     };
-
+    setLoading(true);
     fetchOffers();
-  }, []);
+  }, [titleSearch, rangeValues, sort]);
   return (
     <div className="home-wrapper">
       {loading ? (

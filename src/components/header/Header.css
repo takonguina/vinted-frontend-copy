@@ -4,6 +4,12 @@ header img {
   width: 75px;
 }
 
+.search-icon {
+  position: absolute;
+  top: 25%;
+  left: 10px;
+}
+
 /* CONTAINERS */
 
 header {
@@ -34,6 +40,24 @@ header {
   gap: 30px;
 }
 
+.search-container {
+  position: relative;
+}
+
+.filters {
+  display: flex;
+  align-items: center;
+  margin-top: 15px;
+}
+
+.sort {
+  flex: 1;
+  display: flex;
+}
+
+.range {
+  flex: 3;
+}
 /* HEADER BUTTONS */
 
 .header-button {
@@ -60,4 +84,40 @@ header {
   color: white;
   font-weight: bold;
   border: none;
+}
+
+/* INPUT */
+
+.search-item {
+  width: 590px;
+  padding-left: 40px;
+  background-color: #f5f6f7;
+  border-radius: 5px;
+  height: 37px;
+  border: none;
+  outline: none;
+  font-size: 16px;
+}
+
+/* TEXT  */
+
+.sort-price {
+  font-size: 14px;
+  margin-right: 10;
+  color: #2cb1ba;
+  display: flex;
+  gap: 3px;
+  align-items: center;
+}
+
+.arrow {
+  transition: transform 0.3s ease; /* Transition de 0.3 secondes pour la rotation */
+}
+
+.up {
+  transform: rotate(0deg); /* Flèche orientée vers le haut */
+}
+
+.down {
+  transform: rotate(180deg); /* Flèche orientée vers le bas */
 }

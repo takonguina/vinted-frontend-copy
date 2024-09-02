@@ -5,17 +5,51 @@ import Offer from "./pages/Offer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NewOffer from "./pages/NewOffer";
+import { useState } from "react";
+import Cookies from "js-cookie";
 import "./App.css";
 
 function App() {
+  const [token, setToken] = useState(Cookies.get("token") || null);
+  const [titleSearch, setTitleSearch] = useState("");
+  const [rangeValues, setRangeValues] = useState([0, 10000]);
+  const [sort, setSort] = useState(false);
+
+  const setUser = (token) => {
+    if (token) {
+      setToken(token);
+      Cookies.set("token", token, { expires: 30 });
+    } else {
+      setToken(null);
+      Cookies.remove("token");
+    }
+  };
+
   return (
     <Router>
-      <Header />
+      <Header
+        token={token}
+        setUser={setUser}
+        titleSearch={titleSearch}
+        setTitleSearch={setTitleSearch}
+        setRangeValues={setRangeValues}
+        sort={sort}
+        setSort={setSort}
+      />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={
+            <Home
+              titleSearch={titleSearch}
+              rangeValues={rangeValues}
+              sort={sort}
+            />
+          }
+        />
         <Route path="/offer/:id" element={<Offer />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<SignUp setUser={setUser} />} />
+        <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/newOffer" element={<NewOffer />} />
       </Routes>
     </Router>

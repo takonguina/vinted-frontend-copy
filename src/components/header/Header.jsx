@@ -1,31 +1,37 @@
-import { useEffect, useState } from "react";
 import "./Header.css";
+import { IoIosArrowUp } from "react-icons/io";
+
 import { Link, useNavigate } from "react-router-dom";
-import Cookies from "js-cookie";
+import { Range } from "react-range";
+import { FaSearch } from "react-icons/fa";
+import { useState } from "react";
 
-const Header = () => {
+const MIN = 0;
+const MAX = 500;
+const Header = ({
+  token,
+  setUser,
+  setTitleSearch,
+  setRangeValues,
+  sort,
+  setSort,
+}) => {
+  const [rangeValuesFinal, setRangeValuesFinal] = useState([0, 500]);
+
   const navigate = useNavigate();
-  const [isConnected, setIsConnected] = useState(false);
-
-  const handleDisconnect = () => {
-    Cookies.remove("token");
-    setIsConnected(false);
-    navigate("/");
-  };
 
   const handleNewOffer = () => {
-    if (isConnected) {
+    if (token) {
       navigate("/newOffer");
     } else {
       navigate("/login");
     }
   };
 
-  useEffect(() => {
-    if (Cookies.get("token")) {
-      setIsConnected(true);
-    }
-  });
+  const handleSetTitleSearch = (event) => {
+    const value = event.target.value;
+    setTitleSearch(value);
+  };
 
   return (
     <header>
@@ -34,10 +40,94 @@ const Header = () => {
           <Link to="/">
             <img src="/logo.png" alt="vinted-logo" />
           </Link>
-          <input type="text" placeholder="Recherche des articles" />
+          <div className="search-container">
+            <FaSearch className="search-icon" />
+            <input
+              className="search-item"
+              type="text"
+              placeholder="Recherche des articles"
+              onChange={handleSetTitleSearch}
+            />
+
+            <div className="filters">
+              <div
+                className="sort"
+                onClick={() => {
+                  setSort(!sort);
+                }}
+              >
+                <span className="sort-price">
+                  <IoIosArrowUp className={`arrow ${sort ? "up" : "down"}`} />
+                  {sort ? "Prix croissants" : "Prix décroissants"}
+                </span>
+              </div>
+              <div className="range">
+                <Range
+                  label="Select your value"
+                  step={5}
+                  min={MIN}
+                  max={MAX}
+                  values={rangeValuesFinal}
+                  onChange={(values) => setRangeValuesFinal(values)}
+                  onFinalChange={(values) => {
+                    setRangeValues(values);
+                  }}
+                  renderTrack={({ props, children }) => (
+                    <div
+                      {...props}
+                      style={{
+                        ...props.style,
+                        height: "6px",
+                        width: "100%",
+                        backgroundColor: "#ccc",
+                      }}
+                    >
+                      {children}
+                    </div>
+                  )}
+                  renderThumb={({ props, index }) => (
+                    <div
+                      {...props}
+                      key={props.key}
+                      style={{
+                        position: "absolute",
+                        zIndex: 1,
+                        cursor: "grab",
+                        userSelect: "none",
+                        touchAction: "none",
+                        height: "15px",
+                        width: "15px",
+                        borderRadius: "50%",
+                        backgroundColor: "#2BAEB7",
+                        outline: "none",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                        border: "1px solid white",
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: "absolute",
+                          top: "-28px",
+                          color: "#fff",
+                          fontSize: "12px",
+                          padding: "4px",
+                          borderRadius: "4px",
+                          backgroundColor: "#2cb1ba",
+                        }}
+                      >
+                        {rangeValuesFinal[index]}€
+                      </div>
+                    </div>
+                  )}
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="header-buttons">
-          {!isConnected ? (
+          {!token ? (
             <div className="disconnected-buttons">
               <button
                 className="header-button user-button"
@@ -59,7 +149,9 @@ const Header = () => {
           ) : (
             <button
               className="header-button connected"
-              onClick={handleDisconnect}
+              onClick={() => {
+                setUser(null);
+              }}
             >
               Se déconnecter
             </button>
