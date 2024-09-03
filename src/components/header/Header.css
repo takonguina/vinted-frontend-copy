@@ -32,7 +32,7 @@ header {
 
 .header-buttons {
   display: flex;
-  gap: 70px;
+  gap: 40px;
 }
 
 .disconnected-buttons {
@@ -40,6 +40,10 @@ header {
   gap: 30px;
 }
 
+.connected-buttons {
+  display: flex;
+  gap: 30px;
+}
 .search-container {
   position: relative;
 }
@@ -77,6 +81,7 @@ header {
 .sell-button {
   background-color: #2cb1ba;
   color: #fff;
+  font-weight: bold;
 }
 
 .connected {

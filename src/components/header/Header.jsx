@@ -162,14 +162,24 @@ const Header = ({
               </button>
             </div>
           ) : (
-            <button
-              className="header-button connected"
-              onClick={() => {
-                setUser(null);
-              }}
-            >
-              Se déconnecter
-            </button>
+            <div className="connected-buttons">
+              <button
+                className="header-button connected"
+                onClick={() => {
+                  setUser(null);
+                }}
+              >
+                Se déconnecter
+              </button>
+              <button
+                className="header-button sell-button"
+                onClick={() => {
+                  navigate("/profil");
+                }}
+              >
+                Profil
+              </button>
+            </div>
           )}
 
           <button
