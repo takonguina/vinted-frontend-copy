@@ -5,6 +5,7 @@ import Offer from "./pages/Offer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
 import NewOffer from "./pages/newOffer";
+import Payment from "./pages/Payment";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
@@ -51,6 +52,7 @@ function App() {
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
         <Route path="/newOffer" element={<NewOffer token={token} />} />
+        <Route path="/payment" element={<Payment token={token} />} />
       </Routes>
     </Router>
   );

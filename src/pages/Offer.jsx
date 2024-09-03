@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import "./Offer.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -7,6 +7,7 @@ const Offer = () => {
   const { id } = useParams();
   const [offer, setOffer] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,7 +23,7 @@ const Offer = () => {
     };
 
     fetchData();
-  }, []);
+  }, [id]);
   return (
     <div className="page-offer-container">
       {isLoading ? (
@@ -77,7 +78,18 @@ const Offer = () => {
                   <div className="avatar"></div>
                   <p>{offer.owner.account.username}</p>
                 </div>
-                <button className="buy" onClick={() => alert("Stripe soon!")}>
+                <button
+                  className="buy"
+                  onClick={() =>
+                    navigate("/payment", {
+                      state: {
+                        title: offer.product_name,
+                        price: offer.product_price,
+                        id: id,
+                      },
+                    })
+                  }
+                >
                   Acheter
                 </button>
               </div>
