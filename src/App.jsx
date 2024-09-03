@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import NewOffer from "./pages/newOffer";
+import NewOffer from "./pages/NewOffer";
 import Payment from "./pages/Payment";
 import { useState } from "react";
 import Cookies from "js-cookie";
