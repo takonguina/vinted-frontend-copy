@@ -1,9 +1,47 @@
 .form-payment {
-  margin-top: 10vh;
+  margin-top: 30px;
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 30px;
+  background-color: white;
+  width: 600px;
+}
+
+.details-purshase {
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-bottom: 1px solid rgb(237, 235, 235);
+}
+
+.detail-purshase {
+  display: flex;
+  justify-content: space-between;
+  color: rgb(127, 127, 127);
+  font-size: 16px;
+}
+
+.total-purshase-container {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding: 30px 30px;
+}
+
+.total-purshase {
+  display: flex;
+  justify-content: space-between;
+}
+
+.purshase-button-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 30px;
+}
+
+.payment-element-container {
+  padding: 0 30px;
 }
 
 .form-payment button {
@@ -11,7 +49,7 @@
   color: white;
   padding: 10px;
   border-radius: 10px;
-  width: 50%;
+  width: 100%;
 }
 
 .payment-accepted {
@@ -19,4 +57,16 @@
   color: green;
   font-weight: bold;
   font-size: 24px;
+}
+
+.resume-purshase h4 {
+  color: rgb(192, 192, 192);
+  font-size: 14px;
+  margin-top: 20px;
+  padding: 0 20px;
+}
+
+.description-purshase {
+  text-align: justify;
+  font-size: 15px;
 }

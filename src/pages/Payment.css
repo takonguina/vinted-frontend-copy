@@ -1,3 +1,8 @@
+.payment-background {
+  background-color: #eaedee;
+  min-height: calc(100vh - 120px);
+}
+
 .payment-container {
   display: flex;
   justify-content: center;

@@ -103,10 +103,42 @@ const CheckoutForm = ({ amount, title, id, token }) => {
     <p className="payment-accepted">Paiement effectué</p>
   ) : (
     <form className="form-payment" onSubmit={handleSubmit}>
-      <PaymentElement />
-      <button type="submit" disabled={!stripe || !elements || isLoading}>
-        Payer
-      </button>
+      <div className="resume-purshase">
+        <h4>Résumé de la commande</h4>
+        <div className="details-purshase">
+          <div className="detail-purshase">
+            Commande <span>{amount / 100} €</span>
+          </div>
+          <div className="detail-purshase">
+            Frais de protection des acheteurs <span>1.70 €</span>
+          </div>
+          <div className="detail-purshase">
+            Frais de port <span>2.40 €</span>
+          </div>
+        </div>
+        <div className="total-purshase-container">
+          <div className="total-purshase">
+            Total <span>{((amount + 170 + 240) / 100).toFixed(2)} €</span>
+          </div>
+          <div className="description-purshase">
+            Il ne vous reste plus qu'une étape pour offrir{" "}
+            <span style={{ fontWeight: "bold" }}>{title}.</span> Vous allez
+            payer{" "}
+            <span style={{ fontWeight: "bold" }}>
+              {((amount + 170 + 240) / 100).toFixed(2)} €.
+            </span>{" "}
+            (Frais de protection & frais de port inclut)
+          </div>
+        </div>
+      </div>
+      <div className="payment-element-container">
+        <PaymentElement />
+      </div>
+      <div className="purshase-button-container">
+        <button type="submit" disabled={!stripe || !elements || isLoading}>
+          Payer
+        </button>
+      </div>
       {/* Éventuel message d'erreur */}
       {errorMessage && <div>{errorMessage}</div>}
     </form>

@@ -19,11 +19,12 @@ const Payment = ({ token }) => {
     // On peut customiser l'apparence ici
     appearance: {
       /*...*/
+      // theme: "flat",
     },
   };
 
   return (
-    <>
+    <div className="payment-background">
       {token ? (
         <div className="payment-container">
           <Elements stripe={stripePromise} options={options}>
@@ -38,7 +39,7 @@ const Payment = ({ token }) => {
       ) : (
         <Navigate to="/login" />
       )}
-    </>
+    </div>
   );
 };
 
