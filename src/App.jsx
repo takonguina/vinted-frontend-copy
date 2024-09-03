@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Offer from "./pages/Offer";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
-import NewOffer from "./pages/NewOffer";
+import NewOffer from "./pages/newOffer";
 import { useState } from "react";
 import Cookies from "js-cookie";
 import "./App.css";
@@ -50,7 +50,7 @@ function App() {
         <Route path="/offer/:id" element={<Offer />} />
         <Route path="/signup" element={<SignUp setUser={setUser} />} />
         <Route path="/login" element={<Login setUser={setUser} />} />
-        <Route path="/newOffer" element={<NewOffer />} />
+        <Route path="/newOffer" element={<NewOffer token={token} />} />
       </Routes>
     </Router>
   );

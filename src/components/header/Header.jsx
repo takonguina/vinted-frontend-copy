@@ -2,7 +2,7 @@ import "./Header.css";
 import { IoIosArrowUp } from "react-icons/io";
 
 import { Link, useNavigate } from "react-router-dom";
-import { Range } from "react-range";
+import { getTrackBackground, Range } from "react-range";
 import { FaSearch } from "react-icons/fa";
 import { useState } from "react";
 
@@ -74,7 +74,6 @@ const Header = ({
                   }}
                   renderTrack={({ props, children }) => (
                     <div
-                      {...props}
                       style={{
                         ...props.style,
                         height: "6px",
@@ -82,7 +81,23 @@ const Header = ({
                         backgroundColor: "#ccc",
                       }}
                     >
-                      {children}
+                      <div
+                        ref={props.ref}
+                        style={{
+                          height: "5px",
+                          width: "100%",
+                          borderRadius: "4px",
+                          background: getTrackBackground({
+                            values: rangeValuesFinal,
+                            colors: ["#ccc", " #2cb1ba", "#ccc"],
+                            min: MIN,
+                            max: MAX,
+                          }),
+                          alignSelf: "center",
+                        }}
+                      >
+                        {children}
+                      </div>
                     </div>
                   )}
                   renderThumb={({ props, index }) => (
