@@ -14,32 +14,24 @@ const NewOffer = ({ token }) => {
   const [condition, setCondition] = useState("");
   const [city, setCity] = useState("");
   const [price, setPrice] = useState(0);
-  console.log(file);
 
   const handleNewOffer = async (event) => {
     event.preventDefault();
     try {
       const formData = new FormData();
-      formData.append("product_name", title);
-      formData.append("product_description", description);
-      formData.append("product_price", price);
       formData.append("picture", file);
-      formData.append(
-        "product_details",
-        JSON.stringify([
-          { MARQUE: brand },
-          { TAILLE: size },
-          { ÉTAT: condition },
-          { COULEUR: color },
-          { EMPLACEMENT: city },
-        ])
-      );
-      console.log(formData);
+      formData.append("title", title);
+      formData.append("description", description);
+      formData.append("price", price);
+      formData.append("brand", brand);
+      formData.append("size", size);
+      formData.append("color", color);
+      formData.append("condition", condition);
+      formData.append("city", city);
+
       const response = await axios.post(
         `${import.meta.env.VITE_API_URL}/offer/publish`,
-        {
-          formData,
-        },
+        formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
@@ -50,7 +42,6 @@ const NewOffer = ({ token }) => {
       if (response.status === 200) {
         navigate(`/offer/${response.data._id}`);
       }
-      console.log(response);
     } catch (error) {
       console.log(error.response.data);
     }
