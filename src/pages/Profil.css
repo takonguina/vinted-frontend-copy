@@ -1,0 +1,34 @@
+.profil-container {
+  background-color: #eaedee;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  justify-content: center;
+}
+
+.profil-content {
+  margin-top: 10vh;
+}
+
+.sales-container {
+  background-color: white;
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sales-container h4 {
+  font-weight: bold;
+  font-size: 24px;
+  padding: 15px;
+}
+
+.sales-infos-container {
+  width: 100%;
+}
+
+.sale-container {
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
